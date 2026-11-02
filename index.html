@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Rush</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="hud">
+        <div class="brand-wrap">
+          <span class="brand">Snake Rush</span>
+        </div>
+        <div class="stats">
+          <div class="stat-card">
+            <span class="label">Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="label">Best</span>
+            <strong id="best-score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="label">Speed</span>
+            <strong id="speed">1.0x</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="board-panel">
+        <canvas id="game" width="480" height="480" aria-label="Snake game"></canvas>
+        <div id="overlay" class="overlay visible">
+          <div class="overlay-card">
+            <p class="eyebrow">Arcade</p>
+            <h1>Snake Rush</h1>
+            <p>Use arrow keys or WASD to move. Collect fruit, avoid walls, and don’t crash into yourself.</p>
+            <button id="start-button" type="button">Play Now</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="controls" aria-label="Game controls">
+        <button type="button" data-dir="up" class="control-btn">↑</button>
+        <div class="middle-row">
+          <button type="button" data-dir="left" class="control-btn">←</button>
+          <button type="button" id="pause-button" class="control-btn accent">Pause</button>
+          <button type="button" data-dir="right" class="control-btn">→</button>
+        </div>
+        <button type="button" data-dir="down" class="control-btn">↓</button>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

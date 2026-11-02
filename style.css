@@ -1,0 +1,238 @@
+:root {
+  --bg-1: #07131f;
+  --bg-2: #122942;
+  --panel: rgba(11, 23, 34, 0.82);
+  --panel-border: rgba(157, 201, 255, 0.2);
+  --primary: #7ce0ff;
+  --secondary: #79ffb0;
+  --accent: #ffcc70;
+  --danger: #ff7a7a;
+  --food: #ff6b6b;
+  --snake-head: #7ef1a3;
+  --snake-body: #4cc36b;
+  --grid: rgba(255, 255, 255, 0.06);
+  --text: #ebf8ff;
+  --muted: #b6cedd;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #123d68 0%, var(--bg-1) 32%, #050d16 100%);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+button {
+  font: inherit;
+}
+
+.game-shell {
+  width: min(100%, 620px);
+  padding: 18px 18px 16px;
+  border-radius: 24px;
+  background: rgba(10, 19, 29, 0.8);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 24px 60px var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand {
+  font-size: clamp(1.3rem, 2vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.stat-card {
+  min-width: 78px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.stat-card strong {
+  font-size: 1.1rem;
+}
+
+.board-panel {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(12, 31, 21, 0.88), rgba(6, 15, 27, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+canvas {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1;
+  background: rgba(8, 18, 25, 0.6);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(6, 12, 19, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.overlay.visible {
+  display: grid;
+}
+
+.overlay-card {
+  width: min(85%, 360px);
+  padding: 20px 20px 24px;
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(11, 26, 35, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.overlay-card h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.overlay-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+#start-button,
+.control-btn {
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+#start-button {
+  background: linear-gradient(135deg, var(--primary), #6ad7ff);
+  color: #05263b;
+  font-weight: 800;
+  padding: 12px 18px;
+  min-width: 140px;
+}
+
+#start-button:hover,
+.control-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.controls {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.middle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 68px;
+  height: 58px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.control-btn.accent {
+  width: 106px;
+  font-size: 0.98rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: linear-gradient(180deg, rgba(124, 224, 255, 0.18), rgba(124, 224, 255, 0.06));
+}
+
+@media (max-width: 520px) {
+  .game-shell {
+    padding: 14px 12px 12px;
+  }
+
+  .hud {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stats {
+    justify-content: space-between;
+  }
+
+  .stat-card {
+    flex: 1;
+  }
+
+  .controls {
+    margin-top: 12px;
+  }
+}
